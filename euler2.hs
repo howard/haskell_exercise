@@ -4,10 +4,9 @@
 
 Find the sum of all the even-valued terms in the sequence which do not exceed four million.-}
 
-fib :: Int -> Int
+
 fib n = fibs !! n
   where
     fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
-
-euler2 = sum [x | x <- [fib 0,fib 1..], even x, x < 4000000]
+euler2 = sum [fib x | x <- [0..33], even (fib x)] --correct
