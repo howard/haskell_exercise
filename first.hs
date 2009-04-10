@@ -10,4 +10,7 @@ factorial'' x
       | x < 0 = error "You can't make the factorial or a negative number."
       | x == 0 || x == 1 = 1
       | x > 1 = x * factorial'' (x-1)
-      
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort all@(_:xs) = (maximum all) : (quicksort xs) --bullshit
