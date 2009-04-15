@@ -3,7 +3,6 @@
 What is the 10001^(st) prime number?-}
 
 
-prims n = 2:[x | x <- [3..], odd x] !! n
-prime n = prims !! n where even ((prims !! n) - (prims !! n-1))
+import Primeutils
 
-euler7 = prime 1000
+euler7 = primes !! 10000

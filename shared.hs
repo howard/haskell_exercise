@@ -15,3 +15,4 @@ factorial x = if x > 0 then product [1..x] else 0
 pentagonalNo x = x * (3 * x - 1) `div` 2
 
 hexagonalNo x = x * (2 * x - 1)
+
