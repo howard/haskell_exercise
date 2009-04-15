@@ -5,4 +5,4 @@ What is the 10001^(st) prime number?-}
 
 import Primeutils
 
-euler7 = primes !! 10000
+euler7 = primes !! 10000 --correct 104743
