@@ -24,6 +24,7 @@ the message and find the sum of the ASCII values in the original text.-}
 
 import Data.Bits(xor)
 import Data.Char(ord,chr)
+import Shared(allTriCombinationsOf, match)
 
 cipher = [79,59,12,2,79,35,8,28,20,2,3,68,8,9,68,45,0,12,9,67,68,4,7,5,23,27,1,21,79,85,
           78,79,85,71,38,10,71,27,12,2,79,6,2,8,13,9,1,13,9,8,68,19,7,1,71,56,11,21,11,
@@ -67,10 +68,8 @@ cipher = [79,59,12,2,79,35,8,28,20,2,3,68,8,9,68,45,0,12,9,67,68,4,7,5,23,27,1,2
           18,2,79,23,2,10,10,71,7,13,20,79,3,11,0,22,30,67,68,19,7,1,71,8,8,8,29,29,71,
           0,2,71,27,12,2,79,11,9,3,29,71,60,11,9,79,11,1,79,16,15,10,68,33,14,16,15,10,22,73]
 
-decipher phrase@(x:y:z:_) [e] = [f a | a <- e, let f b
-                                              | b ``]
+decipher :: String -> [Int] -> [Char]
+decipher pass enc = [chr ((ord a) `xor` b) | a <- pass, b <- enc]
 
 euler59 = do
-  decipher "abc" cipher
-  --print decrypted
-  --print (sum [ord x | x <- decrypted])
+  print $ [(pass, decr) | pass <- (allTriCombinationsOf 'a' 'z'), let decr = decipher pass cipher, match "euler" decr]

@@ -9,7 +9,7 @@ contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The u
 "and" when writing out numbers is in compliance with British usage.-}
 
 
-letterConverter x = do
+numberConverter x = do
   f (show x) where f c
                      | c == "11" = "eleven"
                      | c == "12" = "twelve"
@@ -39,4 +39,5 @@ verbalizeNo x y z
             | x == '9' = if y == True then "ninety" else if z == True then "ninehundredand" else "nine"
             | otherwise = error "Dont't give me letterz, dawg."
 
-euler17 = sum [length (letterConverter x) | x <- [1..1000]]
+lengthOfPronouncedNumbers n m = sum [length (numberConverter x) | x <- [n..m]]
+euler17 = lengthOfPronouncedNumbers 1 1000

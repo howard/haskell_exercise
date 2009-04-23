@@ -1,5 +1,8 @@
 module Shared where
 
+import Data.List(find)
+import Maybe
+
 fib n = fibs !! n
   where
     fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
@@ -16,3 +19,10 @@ pentagonalNo x = x * (3 * x - 1) `div` 2
 
 hexagonalNo x = x * (2 * x - 1)
 
+allTriCombinationsOf x y = [ [a, b, c] | a <- [x..y], b <- [x..y], c <- [x..y]]
+
+-- | Checks if String x is in String y, returns True of False
+match :: String -> String -> Bool
+match x y
+        | isJust (find (==x) (words y)) = True
+        | otherwise = False
