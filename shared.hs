@@ -1,5 +1,6 @@
 module Shared where
 
+import Data.Char(chr,ord)
 import Data.List(find)
 import Maybe
 
@@ -26,3 +27,9 @@ match :: String -> String -> Bool
 match x y
         | isJust (find (==x) (words y)) = True
         | otherwise = False
+
+-- | Functions to convert text to a list of corresponding ascii values and vice versa
+textToCodes :: String -> [Int]
+textToCodes x = [ord y | y <- x]
+codesToText :: [Int] -> String
+codesToText x = [chr y | y <- x]

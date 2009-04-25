@@ -5,5 +5,6 @@ Find the sum of all the primes below two million.-}
 
 import Primeutils
 
-first2000000 = take 2000000 primes
-euler10 = sum first2000000
+euler10 = sum (take 2000000 primes)
+
+main = print $ euler10

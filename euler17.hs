@@ -37,7 +37,7 @@ verbalizeNo x y z
             | x == '7' = if y == True then "seventy" else if z == True then "sevenhundredand" else "seven"
             | x == '8' = if y == True then "eighty" else if z == True then "eighthundredand" else "eight"
             | x == '9' = if y == True then "ninety" else if z == True then "ninehundredand" else "nine"
-            | otherwise = error "Dont't give me letterz, dawg."
+            | otherwise = error "Dont't give me letterz'n'shit, dawg."
 
 lengthOfPronouncedNumbers n m = sum [length (numberConverter x) | x <- [n..m]]
 euler17 = lengthOfPronouncedNumbers 1 1000
