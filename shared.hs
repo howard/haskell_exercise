@@ -43,3 +43,9 @@ listDivisors x = [y | y <- [1..x], x `mod` y == 0]
 mergeLists :: (Eq a) => [[a]] -> [a]
 mergeLists [] = []
 mergeLists (x:y:zs) = [] ++ (union x y) ++ if length zs == 1 then head zs else if length zs == 0 then [] else mergeLists zs
+
+isPalindromic :: Integer -> Bool
+isPalindromic x = showed == reverse showed where showed = show x
+
+reverseNo :: Integer -> Integer
+reverseNo x = read (reverse (show x))::Integer

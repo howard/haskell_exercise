@@ -77,4 +77,4 @@ decipher pass enc = do
 euler59 = do
   print $ sum (textToCodes (snd (head [(pass, decr) | pass <- (allTriCombinationsOf 'a' 'z'), let decr = decipher pass cipher, match "the" decr])))
 
-main = euler59 --correct 107359
+main = euler59 --correct 107359 in 1m25.453s

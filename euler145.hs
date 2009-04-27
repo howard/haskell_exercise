@@ -11,6 +11,8 @@ import Data.Char(digitToInt)
 
 check :: String -> Bool
 check [] = True
-check (x:y) = if odd (digitToInt x) then check y else False
+check (x:y) = if even (digitToInt x) then False else check y
 
-euler145 = length [x | x <- [10..99999999], check (show (sum [x, read (reverse (show x))::Int]))]
+euler145 = length [x | x <- [10..999999999], check (show (sum [x, read (reverse (show x))::Int]))]
+
+main = print euler145
