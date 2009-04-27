@@ -10,6 +10,6 @@ Evaluate the sum of all the amicable numbers under 10000.-}
 
 import Shared(listDivisors)
 
-euler21 = sum [a | a <- [1..9999], b <- [1..9999], a /= b, sum (listDivisors a) == b]
+euler21 = sum [a | a <- [1..9999], b <- [1..9999], a /= b, sum (init $ listDivisors a) == b, sum (init $ listDivisors b) == a]
 
-main = print euler21
+main = print euler21 -- correct 31626 in 7.718s
