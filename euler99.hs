@@ -1,5 +1,5 @@
-import Data.List(find)
-import Maybe
+--import Data.List(find)
+--import Maybe
 
 pairs = [(519432,525806),
   (632382,518061),
@@ -1002,5 +1002,10 @@ pairs = [(519432,525806),
   (172115,573985),
   (13846,725685)]
 
-(sources, results) = unzip [((fst x, snd x), (fst x)^(snd x)) | x <- pairs]
-euler99 = fromJust (find (==(maximum results)) results)
+--(sources, results) = unzip [((fst x, snd x), (fst x)^(snd x)) | x <- pairs]
+--euler99 = fromJust (find (==(maximum results)) results)
+
+calcd = maximum [(fst p)^(snd p)| p <- pairs]
+euler99 = head [p | p <- pairs, (fst p)^(snd p) == calcd]
+
+main = print euler99 -- correct - (895447,504922) which is the 709th pair
