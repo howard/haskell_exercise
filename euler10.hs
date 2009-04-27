@@ -3,8 +3,8 @@
 Find the sum of all the primes below two million.-}
 
 
-import Primeutils
+import Primeutils(eratosthenes)
 
-euler10 = sum [x | x <- primes, x < 2000000]
+euler10 = sum [x | x <- eratosthenes 2000000]
 
-main = print $ euler10
+main = print $ euler10 -- correct 142913828922
