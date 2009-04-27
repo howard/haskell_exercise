@@ -4,7 +4,16 @@
 prompt = do
   putStr ">> "
   input <- getLine
-  if input == "exit" then putStrLn "Exiting..."
+  if check input == "EXIT" then putStrLn "Exiting..."
     else prompt
 
-main = prompt
+prompt' = do
+  putStr ">> "
+  interact check
+
+check x
+      | x == ":q" = "EXIT\n>> "
+      | x == ":h" = "Nothing to help here.\n>> "
+      | otherwise = x ++ "\n>> "
+
+main = prompt'

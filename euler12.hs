@@ -17,6 +17,8 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?-}
 
 
-import Shared(triangleNo)
+import Shared(triangleNos,listDivisors)
 
-euler12 = 0
+euler12 = head [x | x <- triangleNos, let y = listDivisors x, length y > 500]
+
+main = print $ euler12

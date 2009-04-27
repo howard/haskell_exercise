@@ -1,7 +1,7 @@
 module Shared where
 
 import Data.Char(chr,ord)
-import Data.List(find)
+import Data.List(find,union)
 import Maybe
 
 fib n = fibs !! n
@@ -13,6 +13,9 @@ triangleNo x = sum [1..x]
 --recursive approach
 triangleNo' 1 = 1
 triangleNo' x = x + triangleNo' (x-1)
+
+triangleNos = [triangleNo x | x <- [1,2..]]
+triangleNos' = [triangleNo' x | x <- [1,2..]]
 
 factorial x = if x > 0 then product [1..x] else 0
 
@@ -33,3 +36,10 @@ textToCodes :: String -> [Int]
 textToCodes x = [ord y | y <- x]
 codesToText :: [Int] -> String
 codesToText x = [chr y | y <- x]
+
+listDivisors :: Integer -> [Integer]
+listDivisors x = [y | y <- [1..x], x `mod` y == 0]
+
+mergeLists :: (Eq a) => [[a]] -> [a]
+mergeLists [] = []
+mergeLists (x:y:zs) = [] ++ (union x y) ++ if length zs == 1 then head zs else if length zs == 0 then [] else mergeLists zs
