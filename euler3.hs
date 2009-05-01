@@ -3,4 +3,9 @@
 What is the largest prime factor of the number 600851475143 ?-}
 
 
-euler3 = [x | x <- [600851475142,600851475141..600000000000], 600851475143 `mod` x == 0] !! 0
+import Primeutils(isPrime)
+import Shared(listDivisors)
+
+euler3 = head [putStrLn (show x) | x <- (reverse (listDivisors 600851475143)), isPrime x]
+
+main = euler3

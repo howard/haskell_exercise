@@ -47,5 +47,19 @@ mergeLists (x:y:zs) = [] ++ (union x y) ++ if length zs == 1 then head zs else i
 isPalindromic :: Integer -> Bool
 isPalindromic x = showed == reverse showed where showed = show x
 
+-- | Reverses a number's digits
 reverseNo :: Integer -> Integer
 reverseNo x = read (reverse (show x))::Integer
+
+-- | Determines whether a number is perfect or not, meaning that the sum of the divisors equals the number.
+isPerfect :: Integer -> Bool
+isPerfect x = sum (init $ listDivisors x) == x
+-- | the following functions are related and self-explanatory
+isDeficient :: Integer -> Bool
+isDeficient x = sum (init $ listDivisors x) < x
+isAbundant :: Integer -> Bool
+isAbundant x = sum (init $ listDivisors x) > x
+
+-- | Computes the sum of the index numbers of a word's characters
+wordScore :: String -> Int
+wordScore x = sum [if n < 97 then n - 64 else n - 96 | y <- x, let n = ord y]
