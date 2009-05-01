@@ -1,7 +1,7 @@
 module Shared where
 
 import Data.Char(chr,ord)
-import Data.List(find,union)
+import Data.List(elemIndices,find,union)
 import Maybe
 
 fib n = fibs !! n
@@ -63,3 +63,7 @@ isAbundant x = sum (init $ listDivisors x) > x
 -- | Computes the sum of the index numbers of a word's characters
 wordScore :: String -> Int
 wordScore x = sum [if n < 97 then n - 64 else n - 96 | y <- x, let n = ord y]
+
+-- | Checks if an element is unique in a list
+isUnique :: (Eq a) => a -> [a] -> Bool
+isUnique x y = length (elemIndices x y) == 1
