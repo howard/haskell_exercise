@@ -7,7 +7,8 @@ primeFactors x
             | otherwise = [y | y <- [2..x], x `mod` y == 0]
 
 isPrime x
-        | x < 2 = error "You must not use a number lower than two as an argument."
+        | x < 0 = error "You must not use a number lower than zero as an argument."
+        | x == 1 = False
         | (firstPrimeFactor x) == x = True
         | otherwise = False
 

@@ -1,7 +1,7 @@
 module Shared where
 
 import Data.Char(chr,ord)
-import Data.List(elemIndices,find,union)
+import Data.List(elemIndices,find,sort,union)
 import Maybe
 
 fib n = fibs !! n
@@ -14,7 +14,9 @@ triangleNo x = sum [1..x]
 triangleNo' 1 = 1
 triangleNo' x = x + triangleNo' (x-1)
 
+triangleNos :: [Int]
 triangleNos = [triangleNo x | x <- [1,2..]]
+triangleNos' :: [Int]
 triangleNos' = [triangleNo' x | x <- [1,2..]]
 
 factorial x = if x > 0 then product [1..x] else 0
@@ -67,3 +69,13 @@ wordScore x = sum [if n < 97 then n - 64 else n - 96 | y <- x, let n = ord y]
 -- | Checks if an element is unique in a list
 isUnique :: (Eq a) => a -> [a] -> Bool
 isUnique x y = length (elemIndices x y) == 1
+
+-- | Converts a character to its corresponding alphabetic index, case-independent
+alphaIndex :: Char -> Int
+alphaIndex x
+           | x `elem` ['A'..'Z'] = (ord x) - 64
+           | x `elem` ['a'..'z'] = (ord x) - 96
+
+-- | Determines whether two lists have the same set of elements or not
+compareUnordList :: (Ord a) => [a] -> [a] -> Bool
+compareUnordList x y = sort x == sort y
