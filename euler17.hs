@@ -20,6 +20,15 @@ numberConverter x = do
                      | c == "17" = "seventeen"
                      | c == "18" = "eighteen"
                      | c == "19" = "nineteen"
+                     | tail c == "11" = (verbalizeNo (c !! 0) False True) ++ "eleven"
+                     | tail c == "12" = (verbalizeNo (c !! 0) False True) ++ "twelve"
+                     | tail c == "13" = (verbalizeNo (c !! 0) False True) ++ "thirteen"
+                     | tail c == "14" = (verbalizeNo (c !! 0) False True) ++ "fourteen"
+                     | tail c == "15" = (verbalizeNo (c !! 0) False True) ++ "fifteen"
+                     | tail c == "16" = (verbalizeNo (c !! 0) False True) ++ "sixteen"
+                     | tail c == "17" = (verbalizeNo (c !! 0) False True) ++ "seventeen"
+                     | tail c == "18" = (verbalizeNo (c !! 0) False True) ++ "eighteen"
+                     | tail c == "19" = (verbalizeNo (c !! 0) False True) ++ "nineteen"
                      | (length c) == 1 = (verbalizeNo (c !! 0) False False)
                      | (length c) == 2 = (verbalizeNo (c !! 0) True False) ++ (verbalizeNo (c !! 1) False False)
                      | (length c) == 3 = (verbalizeNo (c !! 0) False True) ++ (verbalizeNo (c !! 1) True False) ++ (verbalizeNo (c !! 2) False False)

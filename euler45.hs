@@ -8,7 +8,9 @@ It can be verified that T_(285) = P_(165) = H_(143) = 40755.
 Find the next triangle number that is also pentagonal and hexagonal.-}
 
 
-import Shared(triangleNo, pentagonalNo, hexagonalNo)
+import Shared(triangleNo)
 
-euler45 = [tNo | x <- [285..], let tNo = triangleNo x,  ((1 + sqrt(1 + 24 * tNo)) `mod` 6) == tNo,
-                                                        ((1 + sqrt(1 + 12 * tNo)) `mod` 6) == tNo] !! 0
+euler45 = head [tNo | x <- [40754..], let tNo = triangleNo x,  ((1 + sqrt(1 + 24 * tNo)) `mod` 6) == tNo,
+                                                        ((1 + sqrt(1 + 12 * tNo)) `mod` 6) == tNo]
+                                                        
+main = print euler45

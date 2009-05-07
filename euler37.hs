@@ -7,10 +7,22 @@ Find the sum of the only eleven primes that are both truncatable from left to ri
 NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.-}
 
 
-import Primeutils
+import Data.Char(digitToInt)
+import Primeutils(isPrime)
 
-truncates x = do
-  dig = tail(show x)
-  (isPrime dig) && (isPrime (tail dig))
+checkTruncsLeft :: Int -> Bool
+checkTruncsLeft x
+                | length y < 2 = isPrime x
+                | otherwise = if isPrime (digitToInt (head y)) then
+                  checkTruncsLeft (read (tail y)::Int) else False
+                where y = show x
 
-euler37 = sum [x | x <- [11..3797], isPrime x, truncates == True]
+checkTruncsRight :: Int -> Bool
+checkTruncsRight x
+                 | length y < 2 = if x == 0 then False else isPrime x
+                 | otherwise = if (last y) /= '0' then if isPrime (digitToInt (last y)) then checkTruncsRight (read (reverse (tail y))::Int) else False else False
+                 where y = show x
+
+euler37 = sum $ take 11 [x | x <- [11,12..], isPrime x, checkTruncsLeft x, checkTruncsRight x]
+
+main = print euler37
