@@ -4,12 +4,12 @@ import Shared(mergeLists,listDivisors)
 
 primeFactors x
             | x < 2 = error "You must not use a number lower than two as an argument."
-            | otherwise = [y | y <- [2..x], x `mod` y == 0]
+            | otherwise = filter (isPrime) (listDivisors x)
 
 isPrime x
         | x < 0 = error "You must not use a number lower than zero as an argument."
         | x == 1 = False
-        | (firstPrimeFactor x) == x = True
+        | (listDivisors x) !! 1 == x = True
         | otherwise = False
 
 primesBetween x y = [n | n <- [x..y], isPrime n == True]

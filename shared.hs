@@ -62,7 +62,7 @@ isDeficient x = sum (init $ listDivisors x) < x
 isAbundant :: Integer -> Bool
 isAbundant x = sum (init $ listDivisors x) > x
 
--- | Computes the sum of the index numbers of a word's characters
+-- | Computes the sum of the index numbers of a word's characters.
 wordScore :: String -> Int
 wordScore x = sum [if n < 97 then n - 64 else n - 96 | y <- x, let n = ord y]
 
@@ -70,12 +70,16 @@ wordScore x = sum [if n < 97 then n - 64 else n - 96 | y <- x, let n = ord y]
 isUnique :: (Eq a) => a -> [a] -> Bool
 isUnique x y = length (elemIndices x y) == 1
 
--- | Converts a character to its corresponding alphabetic index, case-independent
+-- | Converts a character to its corresponding alphabetic index, case-independent.
 alphaIndex :: Char -> Int
 alphaIndex x
            | x `elem` ['A'..'Z'] = (ord x) - 64
            | x `elem` ['a'..'z'] = (ord x) - 96
 
--- | Determines whether two lists have the same set of elements or not
+-- | Determines whether two lists have the same set of elements or not.
 compareUnordList :: (Ord a) => [a] -> [a] -> Bool
 compareUnordList x y = sort x == sort y
+
+-- | Takes a range of items with the give index from a list.
+take' :: [a] -> Int -> Int -> [a]
+take' li a b = [li !! n | n <- [a..b]]
