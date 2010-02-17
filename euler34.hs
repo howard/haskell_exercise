@@ -6,7 +6,8 @@ Note: as 1! = 1 and 2! = 2 are not sums they are not included.-}
 
 
 import Data.Char(digitToInt)
-import Shared(factorial)
+
+factorial x = if x > 0 then product [1..x] else 0
 
 euler34 = sum [x | x <- [1..1000000], x == sum [factorial (digitToInt y) | y <- show(x)]]
 

@@ -5,6 +5,6 @@ What is the largest prime factor of the number 600851475143 ?-}
 
 import Primeutils(isPrime)
 
-euler3 = head [n | n <- [600851475143,600851475142..], isPrime n, 600851475143 `mod` n == 0]
+euler3 = head [n | n <- [600851475143,600851475142..1], isPrime n]--, 600851475143 `mod` n == 0]
 
 main = print euler3 

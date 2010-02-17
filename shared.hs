@@ -83,3 +83,7 @@ compareUnordList x y = sort x == sort y
 -- | Takes a range of items with the give index from a list.
 take' :: [a] -> Int -> Int -> [a]
 take' li a b = [li !! n | n <- [a..b]]
+
+-- | Logic exlusive or.
+xor :: Bool -> Bool -> Bool
+xor a b = (a && (not b)) || ((not a) && b)

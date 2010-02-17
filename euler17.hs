@@ -48,5 +48,8 @@ verbalizeNo x y z
             | x == '9' = if y == True then "ninety" else if z == True then "ninehundredand" else "nine"
             | otherwise = error "Dont't give me letterz'n'shit, dawg."
 
-lengthOfPronouncedNumbers n m = sum [length (numberConverter x) | x <- [n..m]]
+lengthOfPronouncedNumbers n m = (sum [length (numberConverter x) | x <- [n..m]]) - (3*9)
+
 euler17 = lengthOfPronouncedNumbers 1 1000
+
+main = print $ euler17 --correct
