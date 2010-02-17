@@ -87,3 +87,10 @@ take' li a b = [li !! n | n <- [a..b]]
 -- | Logic exlusive or.
 xor :: Bool -> Bool -> Bool
 xor a b = (a && (not b)) || ((not a) && b)
+
+-- | Converts decimal to arbitrary base.
+decToBase :: Integer -> [Char]
+decToBase 0 _ = "0"
+decToBase x base = reverse $ decToBase' x base
+decToBase' 0 _ = ""
+decToBase' x base = (show (x `rem` base)) ++ (toBase' (x `div` base) base)
