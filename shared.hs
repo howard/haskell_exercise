@@ -1,6 +1,6 @@
 module Shared where
 
-import Data.Char(chr,ord)
+import Data.Char(chr,ord,digitToInt)
 import Data.List(elemIndices,find,sort,union)
 import Maybe
 
@@ -94,3 +94,11 @@ decToBase 0 _ = "0"
 decToBase x base = reverse $ decToBase' x base
 decToBase' 0 _ = ""
 decToBase' x base = (show (x `rem` base)) ++ (toBase' (x `div` base) base)
+
+-- | Converts integer into a list of its digits.
+digits :: Integer -> [Integer]
+digits n = [digitToInt a | a <- (show n), a /= '\"']
+
+-- | Calculates sum of digits.
+digitalSum :: Integer -> Integer
+digitalSum n = sum $ digits x
