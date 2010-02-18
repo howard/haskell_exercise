@@ -89,16 +89,16 @@ xor :: Bool -> Bool -> Bool
 xor a b = (a && (not b)) || ((not a) && b)
 
 -- | Converts decimal to arbitrary base.
-decToBase :: Integer -> [Char]
+decToBase :: Integer -> Integer -> [Char]
 decToBase 0 _ = "0"
 decToBase x base = reverse $ decToBase' x base
 decToBase' 0 _ = ""
-decToBase' x base = (show (x `rem` base)) ++ (toBase' (x `div` base) base)
+decToBase' x base = (show (x `rem` base)) ++ (decToBase' (x `div` base) base)
 
 -- | Converts integer into a list of its digits.
-digits :: Integer -> [Integer]
+digits :: Integer -> [Int]
 digits n = [digitToInt a | a <- (show n), a /= '\"']
 
 -- | Calculates sum of digits.
-digitalSum :: Integer -> Integer
-digitalSum n = sum $ digits x
+digitalSum :: Integer -> Int
+digitalSum n = sum $ digits n
